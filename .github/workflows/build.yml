@@ -4,9 +4,10 @@ on:
   push:
     tags:
       - 'v*.*.*'  # Only trigger when pushing tags like v1.0.0
+
 permissions:
   contents: write
-  
+
 jobs:
   build-windows:
     runs-on: windows-latest
@@ -36,16 +37,17 @@ jobs:
         with:
           python-version: '3.11'
       - run: |
+          pip install pyinstaller
           pip install -r requirements.txt
           pyinstaller --noconfirm --clean --onefile --windowed QR_adder.py
       - uses: actions/upload-artifact@v4
         with:
-          name: QR_Adder_Mac_DMG
-          path: dist/QR_Adder.dmg
+          name: QR_Adder_Mac
+          path: dist/QR_adder
       - name: Upload to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/QR_Adder.dmg
+          files: dist/QR_adder
 
   build-linux:
     runs-on: ubuntu-latest
