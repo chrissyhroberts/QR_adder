@@ -2,3 +2,4 @@ PyQt5
 pandas
 PyMuPDF
 qrcode
+pillow
