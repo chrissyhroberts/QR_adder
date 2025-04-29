@@ -19,7 +19,7 @@ jobs:
       - run: |
           pip install pyinstaller
           pip install -r requirements.txt
-          pyinstaller --noconfirm --clean --windowed --name "QR Adder" QR_adder.py
+          pyinstaller --noconfirm --clean --onefile --windowed QR_adder.py
       - uses: actions/upload-artifact@v4
         with:
           name: QR_Adder_Windows
@@ -39,15 +39,17 @@ jobs:
       - run: |
           pip install pyinstaller
           pip install -r requirements.txt
-          pyinstaller --noconfirm --clean --onefile --windowed QR_adder.py
+          pyinstaller --noconfirm --clean --windowed --name "QR Adder" QR_adder.py
+          cd dist
+          zip -r "QR_Adder_Mac.zip" "QR Adder.app"
       - uses: actions/upload-artifact@v4
         with:
           name: QR_Adder_Mac
-          path: dist/QR_adder
+          path: dist/QR_Adder_Mac.zip
       - name: Upload to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/QR_adder
+          files: dist/QR_Adder_Mac.zip
 
   build-linux:
     runs-on: ubuntu-latest
