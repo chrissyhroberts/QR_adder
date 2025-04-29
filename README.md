@@ -32,7 +32,7 @@ Designed for research studies, logistics, events, and any setting where you need
 
 ## 📦 Installation
 
-Download the latest release from the [Releases page](https://github.com/your-username/your-repo/releases).
+Download the latest release from the [Releases page](https://github.com/chrissyhroberts/QR_adder/releases).
 
 | Platform | File | Instructions |
 |:---|:---|:---|
